@@ -17,4 +17,12 @@ public class Item {
     public int getWeight() {
         return weight;
     }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }
