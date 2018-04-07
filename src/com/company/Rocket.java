@@ -8,8 +8,8 @@ public class Rocket implements SpaceShip {
     private int maxWeight;
 
 
-    public Rocket(int cost, int weightEmpty, int maxWeight) {
-        this.cost = cost;
+    public Rocket(int costMilions, int weightEmpty, int maxWeight) {
+        this.cost = costMilions;
         this.weightEmpty = weightEmpty;
         this.weightCurrent = weightEmpty;
         this.maxWeight = maxWeight;
