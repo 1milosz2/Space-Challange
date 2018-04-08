@@ -10,34 +10,34 @@ public class Simulation {
     private File phase1 = new File("phase-1.txt");
 //    private File phase2 = new File("phase-2.txt");
     private Scanner scanner1;
+//    private Scanner scanner2;
+
 
     {
         try {
-            scanner1 = new Scanner(phase1).useDelimiter("=|\\n");
+            scanner1 = new Scanner(phase1).useDelimiter("[=\\n]");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-//    private Scanner scanner2;
-
 //    {
 //        try {
-//            scanner2 = new Scanner(phase2).useDelimiter("=");
+//            scanner2 = new Scanner(phase2).useDelimiter("[=\\n]");
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
 //    }
 
-
     public ArrayList<Item> loadItems() {
-        ArrayList<Item> ItemsList = new ArrayList<Item>();
+        ArrayList<Item> ItemsList = new ArrayList<>();
         while (scanner1.hasNextLine()) {
-            Item item = new Item(scanner1.next(),scanner1 .nextInt());//
+            Item item = new Item(scanner1.next(),scanner1.nextInt());//
             ItemsList.add(item);
            }
+           scanner1.close();
 //        while (scanner2.hasNextLine()) {
-//            Item item = new Item(scanner2.next(),scanner2 .nextInt());//
+//            Item item = new Item(scanner2.next(),scanner2.nextInt());//
 //            ItemsList.add(item);
 //        }
         return ItemsList;
@@ -45,7 +45,7 @@ public class Simulation {
 
     public ArrayList<Rocket> loadU1(ArrayList<Item> ItemsList){
         int i = 0;
-        ArrayList<Rocket> U1Rockets = new ArrayList<Rocket>();
+        ArrayList<Rocket> U1Rockets = new ArrayList<>();
 
         while (i<=(ItemsList.size()-1)) {
             U1 u1 = new U1(100,10000,18000,5,1);
@@ -60,7 +60,7 @@ public class Simulation {
 
     public ArrayList<Rocket> loadU2(ArrayList<Item> ItemsList){
         int i = 0;
-        ArrayList<Rocket> U2Rockets = new ArrayList<Rocket>();
+        ArrayList<Rocket> U2Rockets = new ArrayList<>();
 
         while (i<=(ItemsList.size()-1)) {
             U2 u2 = new U2(120,18000,29000,4,8);
@@ -76,10 +76,10 @@ public class Simulation {
     public int runSimulation (ArrayList<Rocket> RocketList){
         int budgetNeeded = 0;
 
-        for (int j = 0; j < RocketList.size()-1 ; j++) {
-            budgetNeeded += RocketList.get(j).getCost();
-            while (!(RocketList.get(j).launch() & RocketList.get(j).land()))
-            budgetNeeded += RocketList.get(j).getCost();
+        for (int i = 0; i < RocketList.size()-1 ; i++) {
+            budgetNeeded += RocketList.get(i).getCost();
+            while (!(RocketList.get(i).launch() && RocketList.get(i).land()))
+            budgetNeeded += RocketList.get(i).getCost();
         }
         return budgetNeeded;
     }

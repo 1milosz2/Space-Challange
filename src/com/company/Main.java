@@ -20,7 +20,8 @@ public class Main {
 
     u1Budget= s.runSimulation(U1s);
     u2Budget = s.runSimulation(U2s);
-        System.out.println("Koszt dla u1 to " + u1Budget);
-        System.out.println("Koszt dla u2 to " + u2Budget);
+
+    System.out.println("Koszt dla u1 to " + u1Budget + "mln USD");
+    System.out.println("Koszt dla u2 to " + u2Budget + "mln USD");
     }
 }

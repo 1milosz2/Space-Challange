@@ -7,9 +7,8 @@ public class Rocket implements SpaceShip {
     private int weightCurrent;
     private int maxWeight;
 
-
-    public Rocket(int costMilions, int weightEmpty, int maxWeight) {
-        this.cost = costMilions;
+    Rocket(int costMillion, int weightEmpty, int maxWeight) {
+        this.cost = costMillion;
         this.weightEmpty = weightEmpty;
         this.weightCurrent = weightEmpty;
         this.maxWeight = maxWeight;
@@ -31,22 +30,18 @@ public class Rocket implements SpaceShip {
     }
 
     public final void carry(Item item){
-        weightCurrent = weightCurrent + item.getWeight();
+        weightCurrent += item.getWeight();
     }
 
     public int getCost() {
         return cost;
     }
 
-    public int getWeightCurrent() {
+    int getWeightCurrent() {
         return weightCurrent;
     }
 
-    public int getMaxWeight() {
-        return maxWeight;
-    }
-
-    public int getWeightEmpty() {
+    int getWeightEmpty() {
         return weightEmpty;
     }
 }
