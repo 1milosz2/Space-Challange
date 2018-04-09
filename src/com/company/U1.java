@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class U1 extends Rocket {
 
-    private int cargoLimit;
-    private int launchFailChancePercentage;
-    private int landFailChancePercentage;
+    private double cargoLimit;
+    private double launchFailChancePercentage;
+    private double landFailChancePercentage;
 
-    U1(int cost, int weightEmpty, int maxWeight, int launchFailChancePercentage, int landFailChancePercentage) {
+    public U1(int cost, int weightEmpty, int maxWeight, int launchFailChancePercentage, int landFailChancePercentage) {
         super(cost, weightEmpty, maxWeight);
         this.cargoLimit = maxWeight - weightEmpty;
         this.launchFailChancePercentage = launchFailChancePercentage;
@@ -18,12 +18,14 @@ public class U1 extends Rocket {
     @Override
     public boolean land() {
         int random = new Random().nextInt(100);
-        return random >= landFailChancePercentage * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        double chanceCalculation = landFailChancePercentage * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        return random >= chanceCalculation;
     }
 
     @Override
     public boolean launch() {
         int random = new Random().nextInt(100);
-        return random >= launchFailChancePercentage * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        double chanceCalculation = launchFailChancePercentage * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        return random >= chanceCalculation;
     }
 }

@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Simulation {
 
     private File phase1 = new File("phase-1.txt");
-//    private File phase2 = new File("phase-2.txt");
+    private File phase2 = new File("phase-2.txt");
     private Scanner scanner1;
-//    private Scanner scanner2;
+    private Scanner scanner2;
 
 
     {
@@ -21,26 +21,32 @@ public class Simulation {
         }
     }
 
-//    {
-//        try {
-//            scanner2 = new Scanner(phase2).useDelimiter("[=\\n]");
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    {
+        try {
+            scanner2 = new Scanner(phase2).useDelimiter("[=\\n]");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public ArrayList<Item> loadItems() {
+    public ArrayList<Item> loadItemsPhase1() {
         ArrayList<Item> ItemsList = new ArrayList<>();
-        while (scanner1.hasNextLine()) {
-            Item item = new Item(scanner1.next(),scanner1.nextInt());//
+        while (scanner1.hasNext()) {
+            Item item = new Item(scanner1.next(),scanner1.nextInt());
             ItemsList.add(item);
            }
-           scanner1.close();
-//        while (scanner2.hasNextLine()) {
-//            Item item = new Item(scanner2.next(),scanner2.nextInt());//
-//            ItemsList.add(item);
-//        }
+        scanner1.close();
         return ItemsList;
+    }
+
+    public ArrayList<Item> loadItemsPhase2() {
+        ArrayList<Item> ItemsList2 = new ArrayList<>();
+        while (scanner2.hasNext()) {
+            Item item2 = new Item(scanner2.next(),scanner2.nextInt());
+            ItemsList2.add(item2);
+        }
+        scanner2.close();
+        return ItemsList2;
     }
 
     public ArrayList<Rocket> loadU1(ArrayList<Item> ItemsList){
@@ -75,7 +81,6 @@ public class Simulation {
 
     public int runSimulation (ArrayList<Rocket> RocketList){
         int budgetNeeded = 0;
-
         for (int i = 0; i < RocketList.size()-1 ; i++) {
             budgetNeeded += RocketList.get(i).getCost();
             while (!(RocketList.get(i).launch() && RocketList.get(i).land()))

@@ -7,7 +7,7 @@ public class Rocket implements SpaceShip {
     private int weightCurrent;
     private int maxWeight;
 
-    Rocket(int costMillion, int weightEmpty, int maxWeight) {
+    public Rocket (int costMillion, int weightEmpty, int maxWeight) {
         this.cost = costMillion;
         this.weightEmpty = weightEmpty;
         this.weightCurrent = weightEmpty;
@@ -37,7 +37,7 @@ public class Rocket implements SpaceShip {
         return cost;
     }
 
-    int getWeightCurrent() {
+    public int getWeightCurrent() {
         return weightCurrent;
     }
 
