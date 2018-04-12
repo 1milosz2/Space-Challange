@@ -64,3 +64,4 @@ $RECYCLE.BIN/
 # User added
 .idea
 *.iml
+*/out
