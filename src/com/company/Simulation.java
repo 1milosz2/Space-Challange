@@ -31,7 +31,7 @@ public class Simulation {
 
     public ArrayList<Item> loadItemsPhase1() {
         ArrayList<Item> ItemsList = new ArrayList<>();
-        while (scanner1.hasNext()) {
+        while (scanner1.hasNextLine()) {
             Item item = new Item(scanner1.next(),scanner1.nextInt());
             ItemsList.add(item);
            }
