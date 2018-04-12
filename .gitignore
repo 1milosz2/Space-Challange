@@ -1,3 +1,8 @@
+# User added
+.idea
+*.iml
+*/out
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -61,7 +66,3 @@ $RECYCLE.BIN/
 *.lnk
 .idea/workspace.xml
 
-# User added
-.idea
-*.iml
-*/out
