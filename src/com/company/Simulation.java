@@ -29,24 +29,25 @@ public class Simulation {
         }
     }
 
-    public ArrayList<Item> loadItemsPhase1() {
+    public ArrayList<Item> loadItems(int phase) {
         ArrayList<Item> ItemsList = new ArrayList<>();
-        while (scanner1.hasNextLine()) {
-            Item item = new Item(scanner1.next(),scanner1.nextInt());
-            ItemsList.add(item);
-           }
-        scanner1.close();
-        return ItemsList;
-    }
-
-    public ArrayList<Item> loadItemsPhase2() {
-        ArrayList<Item> ItemsList2 = new ArrayList<>();
-        while (scanner2.hasNext()) {
-            Item item2 = new Item(scanner2.next(),scanner2.nextInt());
-            ItemsList2.add(item2);
+        switch (phase) {
+            case 1 :
+                while (scanner1.hasNextLine()) {
+                    Item item = new Item(scanner1.next(), scanner1.nextInt());
+                    ItemsList.add(item);
+                }
+//                scanner1.close();
+//                break;
+            case 2 :
+                while (scanner2.hasNextLine()) {
+                    Item item = new Item(scanner2.next(), scanner2.nextInt());
+                    ItemsList.add(item);
+                }
+//                scanner2.close();
+//                break;
         }
-        scanner2.close();
-        return ItemsList2;
+        return ItemsList;
     }
 
     public ArrayList<Rocket> loadU1(ArrayList<Item> ItemsList){

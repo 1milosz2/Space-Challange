@@ -18,7 +18,7 @@ public class Main {
         ArrayList<Rocket> U1sPh2;
         ArrayList<Rocket> U2sPh2;
 
-        ItemsPh1 = s.loadItemsPhase1();
+        ItemsPh1 = s.loadItems(1);
         U1sPh1 = s.loadU1(ItemsPh1);
         U2sPh1 = s.loadU2(ItemsPh1);
 
@@ -28,7 +28,7 @@ public class Main {
         System.out.println("First phase u1s cost is " + u1BudgetPh1 + "mln USD");
         System.out.println("First phase u2s cost is " + u2BudgetPh1 + "mln USD");
 
-        ItemsPh2 = s.loadItemsPhase2();
+        ItemsPh2 = s.loadItems(2);
         U1sPh2 = s.loadU1(ItemsPh2);
         U2sPh2 = s.loadU2(ItemsPh2);
 

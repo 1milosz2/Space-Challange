@@ -5,8 +5,6 @@ import com.company.U1;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class U1Test {
 
     @Test
