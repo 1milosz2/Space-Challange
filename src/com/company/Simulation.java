@@ -5,50 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Simulation {
+public abstract class Simulation {
 
-    private File phase1 = new File("phase-1.txt");
-    private File phase2 = new File("phase-2.txt");
-    private Scanner scanner1;
-    private Scanner scanner2;
-
-
-    {
-        try {
-            scanner1 = new Scanner(phase1).useDelimiter("[=\\n]");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    {
-        try {
-            scanner2 = new Scanner(phase2).useDelimiter("[=\\n]");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ArrayList<Item> loadItems(int phase) {
-        ArrayList<Item> ItemsList = new ArrayList<>();
-        switch (phase) {
-            case 1 :
-                while (scanner1.hasNextLine()) {
-                    Item item = new Item(scanner1.next(), scanner1.nextInt());
-                    ItemsList.add(item);
-                }
-//                scanner1.close();
-//                break;
-            case 2 :
-                while (scanner2.hasNextLine()) {
-                    Item item = new Item(scanner2.next(), scanner2.nextInt());
-                    ItemsList.add(item);
-                }
-//                scanner2.close();
-//                break;
-        }
-        return ItemsList;
-    }
+    public abstract ArrayList<Item> loadItems();
 
     public ArrayList<Rocket> loadU1(ArrayList<Item> ItemsList){
         int i = 0;

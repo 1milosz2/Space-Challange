@@ -12,28 +12,28 @@ import static org.junit.Assert.*;
 
 public class SimulationTest {
 
-    @Test
-    public void loadItemsPhase1() {
-        Simulation s = new Simulation();
-        ArrayList<Item> ItemsList = s.loadItems(1);
-        Assert.assertNotNull("array should consist of items objects",ItemsList);
-    }
-
-    @Test
-    public void loadU1() {
-        Simulation s = new Simulation();
-        ArrayList<Item> ItemsList = s.loadItems(1);
-        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
-        Assert.assertNotNull("array should consist of items objects",U1List);
-    }
-
-    @Test
-    public void runSimulation() {
-        Simulation s = new Simulation();
-        ArrayList<Item> ItemsList = s.loadItems(1);
-        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
-        int budegetRequired = s.runSimulation(U1List);
-        boolean isBudgetZero = 0 == budegetRequired;
-        Assert.assertFalse("Budget shouldn't be 0", isBudgetZero);
-    }
+//    @Test
+//    public void loadItemsPhase1() {
+//        Simulation s = new Simulation();
+//        ArrayList<Item> ItemsList = s.loadItems(1);
+//        Assert.assertNotNull("array should consist of items objects",ItemsList);
+//    }
+//
+//    @Test
+//    public void loadU1() {
+//        Simulation s = new Simulation();
+//        ArrayList<Item> ItemsList = s.loadItems(1);
+//        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
+//        Assert.assertNotNull("array should consist of items objects",U1List);
+//    }
+//
+//    @Test
+//    public void runSimulation() {
+//        Simulation s = new Simulation();
+//        ArrayList<Item> ItemsList = s.loadItems(1);
+//        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
+//        int budegetRequired = s.runSimulation(U1List);
+//        boolean isBudgetZero = 0 == budegetRequired;
+//        Assert.assertFalse("Budget shouldn't be 0", isBudgetZero);
+//    }
 }
