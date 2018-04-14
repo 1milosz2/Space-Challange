@@ -9,16 +9,28 @@ public class Main {
         int budget;
         File p1Items = new File("phase-1.txt");
 
-        Simulation p1 = new Simulation();
+        Simulation s = new Simulation();
 
-        ArrayList<Item> ItemsPh1 = p1.loadItems(p1Items);
-        ArrayList<Rocket> U1P1 = p1.loadFleet("u1",ItemsPh1);
-        ArrayList<Rocket> U2P1 = p1.loadFleet("u2",ItemsPh1);
+        ArrayList<Item> Items = s.loadItems(p1Items);
+        ArrayList<Rocket> U1 = s.loadFleet("u1",Items);
+        ArrayList<Rocket> U2 = s.loadFleet("u2",Items);
 
-        budget = p1.runSimulation(U1P1);
+        budget = s.runSimulation(U1);
         System.out.println("First phase u1s cost is " + budget + "mln USD");
 
-        budget = p1.runSimulation(U2P1);
+        budget = s.runSimulation(U2);
         System.out.println("First phase u2s cost is " + budget + "mln USD");
+
+        File p2Items = new File("phase-2.txt");
+
+        Items = s.loadItems(p2Items);
+        U1 = s.loadFleet("u1",Items);
+        U2 = s.loadFleet("u2",Items);
+
+        budget = s.runSimulation(U1);
+        System.out.println("Second phase u1s cost is " + budget + "mln USD");
+
+        budget = s.runSimulation(U2);
+        System.out.println("Second phase u2s cost is " + budget + "mln USD");
     }
 }
