@@ -67,6 +67,6 @@ public class Simulation {
     }
 
     public void communicateOutcome(int budget) {
-        System.out.println(phase + " " + fleetType + " fleet cost is " + budget + "mln USD");
+        System.out.println(phase + " fleet of " + fleetType + " cost is " + budget + "mln USD");
     }
 }

@@ -1,11 +1,16 @@
 package com.company;
 
+import java.util.Random;
+
 public class Rocket implements SpaceShip {
 
     private int cost;
     private int weightEmpty;
     private int weightCurrent;
     private int maxWeight;
+    private double launchFailChancePercentage;
+    private double landFailChancePercentage;
+    private int cargoLimit = getMaxWeight() - getWeightEmpty();
 
 //    public Rocket (int costMillion, int weightEmpty, int maxWeight) {
 //        this.cost = costMillion;
@@ -18,11 +23,15 @@ public class Rocket implements SpaceShip {
     }
 
     public boolean launch(){
-        return true;
+        int random = new Random().nextInt(100);
+        double chanceCalculation = getLaunchFailChancePercentage() * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        return random >= chanceCalculation;
     }
 
     public boolean land(){
-        return true;
+        int random = new Random().nextInt(100);
+        double chanceCalculation = getLandFailChancePercentage() * ((getWeightCurrent() - getWeightEmpty()) / cargoLimit);
+        return random >= chanceCalculation;
     }
 
     public final boolean canCarry(Item item) {
@@ -40,7 +49,7 @@ public class Rocket implements SpaceShip {
         return cost;
     }
 
-    int getWeightCurrent() {
+    private int getWeightCurrent() {
         return weightCurrent;
     }
 
@@ -50,6 +59,14 @@ public class Rocket implements SpaceShip {
 
     int getMaxWeight() {
         return maxWeight;
+    }
+
+    private double getLaunchFailChancePercentage() {
+        return launchFailChancePercentage;
+    }
+
+    private double getLandFailChancePercentage() {
+        return landFailChancePercentage;
     }
 
     void setCost(int cost) {
@@ -62,5 +79,19 @@ public class Rocket implements SpaceShip {
 
     void setMaxWeight(int maxWeight) {
         this.maxWeight = maxWeight;
+    }
+
+    void setLaunchFailChancePercentage(double launchFailChancePercentage) {
+        this.launchFailChancePercentage = launchFailChancePercentage;
+    }
+
+    void setCargoLimit(int cargoLimit) {
+        this.cargoLimit = cargoLimit;
+    }
+
+    void setLandFailChancePercentage(double landFailChancePercentage) {
+        this.landFailChancePercentage = landFailChancePercentage;
+
+
     }
 }
