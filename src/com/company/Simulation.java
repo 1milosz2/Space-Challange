@@ -8,6 +8,9 @@ import java.util.Scanner;
 public class Simulation {
 
     private Scanner scanner;
+    private String phase;
+    private String fleetType;
+    private int budget;
 
     public ArrayList<Item> loadItems(File phase){
         try {
@@ -21,6 +24,7 @@ public class Simulation {
             ItemsList.add(item);
         }
         scanner.close();
+        this.phase = phase.getName().substring(0,phase.getName().length()-4);
         return ItemsList;
     }
 
@@ -48,6 +52,7 @@ public class Simulation {
                     Rockets.add(u2);
                 }
         }
+        this.fleetType = type;
         return Rockets;
     }
 
@@ -59,5 +64,9 @@ public class Simulation {
             budgetNeeded += RocketList.get(i).getCost();
         }
         return budgetNeeded;
+    }
+
+    public void communicateOutcome(int budget) {
+        System.out.println(phase + " " + fleetType + " fleet cost is " + budget + "mln USD");
     }
 }
