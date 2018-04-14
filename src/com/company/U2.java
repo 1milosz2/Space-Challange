@@ -8,11 +8,13 @@ public class U2 extends Rocket {
     private int launchFailChancePercentage;
     private int landFailChancePercentage;
 
-    U2(int cost, int weightEmpty, int maxWeight, int launchFailChancePercentage, int landFailChancePercentage) {
-        super(cost, weightEmpty, maxWeight);
-        this.cargoLimit = maxWeight - weightEmpty;
-        this.launchFailChancePercentage = launchFailChancePercentage;
-        this.landFailChancePercentage = landFailChancePercentage;
+    U2() {
+        setCost(120);
+        setWeightEmpty(18000);
+        setMaxWeight(29000);
+        this.cargoLimit = getMaxWeight() - getWeightEmpty();
+        this.launchFailChancePercentage = 4;
+        this.landFailChancePercentage = 8;
     }
 
     @Override

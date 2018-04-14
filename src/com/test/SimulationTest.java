@@ -20,10 +20,10 @@ public class SimulationTest {
 //    }
 //
 //    @Test
-//    public void loadU1() {
+//    public void loadFleet() {
 //        Simulation s = new Simulation();
 //        ArrayList<Item> ItemsList = s.loadItems(1);
-//        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
+//        ArrayList<Rocket> U1List = s.loadFleet(ItemsList);
 //        Assert.assertNotNull("array should consist of items objects",U1List);
 //    }
 //
@@ -31,7 +31,7 @@ public class SimulationTest {
 //    public void runSimulation() {
 //        Simulation s = new Simulation();
 //        ArrayList<Item> ItemsList = s.loadItems(1);
-//        ArrayList<Rocket> U1List = s.loadU1(ItemsList);
+//        ArrayList<Rocket> U1List = s.loadFleet(ItemsList);
 //        int budegetRequired = s.runSimulation(U1List);
 //        boolean isBudgetZero = 0 == budegetRequired;
 //        Assert.assertFalse("Budget shouldn't be 0", isBudgetZero);

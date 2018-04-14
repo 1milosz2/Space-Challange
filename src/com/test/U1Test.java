@@ -9,8 +9,8 @@ public class U1Test {
 
     @Test
     public void land() {
-        U1 fail = new U1(12,10,18,10,100);
-        U1 success = new U1(12,10,18,10,100);
+        U1 fail = new U1();
+        U1 success = new U1();
         Item bottleOfWatter = new Item("bottle of water", 8);
         fail.carry(bottleOfWatter);
         Assert.assertFalse("Should crash",fail.land());
@@ -19,8 +19,8 @@ public class U1Test {
 
     @Test
     public void launch() {
-        U1 fail = new U1(12,10,18,10,100);
-        U1 success = new U1(12,10,18,10,100);
+        U1 fail = new U1();
+        U1 success = new U1();
         Item bottleOfWatter = new Item("bottle of water", 8);
         fail.carry(bottleOfWatter);
         Assert.assertFalse("Should crash",fail.land());

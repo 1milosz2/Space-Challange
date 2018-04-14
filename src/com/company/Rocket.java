@@ -7,11 +7,14 @@ public class Rocket implements SpaceShip {
     private int weightCurrent;
     private int maxWeight;
 
-    public Rocket (int costMillion, int weightEmpty, int maxWeight) {
-        this.cost = costMillion;
-        this.weightEmpty = weightEmpty;
-        this.weightCurrent = weightEmpty;
-        this.maxWeight = maxWeight;
+//    public Rocket (int costMillion, int weightEmpty, int maxWeight) {
+//        this.cost = costMillion;
+//        this.weightEmpty = weightEmpty;
+//        this.weightCurrent = weightEmpty;
+//        this.maxWeight = maxWeight;
+//    }
+
+    Rocket() {
     }
 
     public boolean launch(){
@@ -37,11 +40,27 @@ public class Rocket implements SpaceShip {
         return cost;
     }
 
-    public int getWeightCurrent() {
+    int getWeightCurrent() {
         return weightCurrent;
     }
 
     int getWeightEmpty() {
         return weightEmpty;
+    }
+
+    int getMaxWeight() {
+        return maxWeight;
+    }
+
+    void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    void setWeightEmpty(int weightEmpty) {
+        this.weightEmpty = weightEmpty;
+    }
+
+    void setMaxWeight(int maxWeight) {
+        this.maxWeight = maxWeight;
     }
 }
