@@ -10,7 +10,6 @@ public class Simulation {
     private Scanner scanner;
     private String phase;
     private String fleetType;
-    private int budget;
 
     public ArrayList<Item> loadItems(File phase){
         try {
