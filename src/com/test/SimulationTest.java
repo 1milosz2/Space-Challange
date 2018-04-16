@@ -27,7 +27,7 @@ class SimulationTest {
         File phase1 = new File ("phase-1.txt");
         ArrayList<Item> ItemsList = s.loadItems(phase1);
         ArrayList<Rocket> U1List = s.loadFleet("u1", ItemsList);
-        int budgetRequired = s.runSimulation(U1List);
+        int budgetRequired = s.calculateBudgetRequired(U1List);
         boolean isBudgetPositiveNumber;
         isBudgetPositiveNumber = budgetRequired >= 0;
         Assert.assertTrue("Budget should be a positive number", isBudgetPositiveNumber);
@@ -39,19 +39,9 @@ class SimulationTest {
         File phase1 = new File ("phase-2.txt");
         ArrayList<Item> ItemsList = s.loadItems(phase1);
         ArrayList<Rocket> U2List = s.loadFleet("u2", ItemsList);
-        int budgetRequired = s.runSimulation(U2List);
+        int budgetRequired = s.calculateBudgetRequired(U2List);
         boolean isBudgetPositiveNumber;
         isBudgetPositiveNumber = budgetRequired >= 0;
         Assert.assertTrue("Budget should be a positive number", isBudgetPositiveNumber);
-    }
-
-    @org.junit.jupiter.api.Test
-    void calculatesU1FleetBudgetWhenFileGiven() {
-        Simulation s = new Simulation();
-        File phase1 = new File ("phase-1.txt");
-        ArrayList<Item> ItemsList = s.loadItems(phase1);
-        ArrayList<Rocket> U1List = s.loadFleet("u1", ItemsList);
-        int budgetRequired = s.runSimulation(U1List);
-        s.communicateOutcome(budgetRequired);
     }
 }
