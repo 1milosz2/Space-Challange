@@ -12,14 +12,6 @@ public class Rocket implements SpaceShip {
     private double landFailChancePercentage;
     private int cargoLimit = getMaxWeight() - getWeightEmpty();
 
-    public Rocket(int cost, int weightEmpty, int maxWeight) {
-        this.cost = cost;
-        this.weightEmpty = weightEmpty;
-        this.weightCurrent = weightEmpty;
-        this.maxWeight = maxWeight;
-        this.cargoLimit = maxWeight - weightCurrent;
-    }
-
     Rocket() {}
 
     public boolean launch(){
@@ -78,7 +70,7 @@ public class Rocket implements SpaceShip {
         this.maxWeight = maxWeight;
     }
 
-    public void setLaunchFailChancePercentage(double launchFailChancePercentage) {
+    void setLaunchFailChancePercentage(double launchFailChancePercentage) {
         this.launchFailChancePercentage = launchFailChancePercentage;
     }
 
@@ -88,7 +80,9 @@ public class Rocket implements SpaceShip {
 
     void setLandFailChancePercentage(double landFailChancePercentage) {
         this.landFailChancePercentage = landFailChancePercentage;
+    }
 
-
+    void setWeightCurrent(int weightCurrent) {
+        this.weightCurrent = weightCurrent;
     }
 }

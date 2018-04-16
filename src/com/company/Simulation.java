@@ -23,7 +23,6 @@ public class Simulation {
             ItemsList.add(item);
         }
         scanner.close();
-        this.phase = phase.getName().substring(0,phase.getName().length()-4);
         return ItemsList;
     }
 
@@ -51,16 +50,15 @@ public class Simulation {
                     Rockets.add(u2);
                 }
         }
-        this.fleetType = type;
         return Rockets;
     }
 
-    public int runSimulation (ArrayList<Rocket> RocketList){
+    public int calculateBudgetRequired(ArrayList<Rocket> RocketList){
         int budgetNeeded = 0;
-        for (int i = 0; i < RocketList.size()-1 ; i++) {
-            budgetNeeded += RocketList.get(i).getCost();
-            while (!(RocketList.get(i).launch() && RocketList.get(i).land()))
-            budgetNeeded += RocketList.get(i).getCost();
+        for (Rocket r : RocketList) {
+            budgetNeeded += r.getCost();
+            while (!(r.launch() && r.land()))
+            budgetNeeded += r.getCost();
         }
         return budgetNeeded;
     }
@@ -68,4 +66,13 @@ public class Simulation {
     public void communicateOutcome(int budget) {
         System.out.println(phase + " fleet of " + fleetType + " cost is " + budget + "mln USD");
     }
+
+    public void runSimulation (File itemsList,String fleetType) {
+        this.phase = itemsList.getName().substring(0,itemsList.getName().length()-4);
+        this.fleetType = fleetType;
+        ArrayList<Item> items = loadItems(itemsList);
+        ArrayList<Rocket> fleet = loadFleet(fleetType,items);
+        int cost = calculateBudgetRequired(fleet);
+        communicateOutcome(cost);
+        }
 }
