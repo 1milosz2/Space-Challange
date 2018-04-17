@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class Rocket implements SpaceShip {
 
-    private int cost;
-    private int weightEmpty;
-    private int weightCurrent;
-    private int maxWeight;
-    private double launchFailChancePercentage;
-    private double landFailChancePercentage;
-    private int cargoLimit = getMaxWeight() - getWeightEmpty();
+    protected int cost;
+    protected int weightEmpty;
+    protected int weightCurrent;
+    protected int maxWeight;
+    protected double launchFailChancePercentage;
+    protected double landFailChancePercentage;
+    protected int cargoLimit = maxWeight - weightEmpty;
 
     Rocket() {}
 
@@ -42,47 +42,47 @@ public class Rocket implements SpaceShip {
         return weightCurrent;
     }
 
-    int getWeightEmpty() {
+    public int getWeightEmpty() {
         return weightEmpty;
     }
 
-    int getMaxWeight() {
+    public int getMaxWeight() {
         return maxWeight;
     }
 
-    private double getLaunchFailChancePercentage() {
+    public double getLaunchFailChancePercentage() {
         return launchFailChancePercentage;
     }
 
-    private double getLandFailChancePercentage() {
+    public double getLandFailChancePercentage() {
         return landFailChancePercentage;
     }
 
-    void setCost(int cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
-    void setWeightEmpty(int weightEmpty) {
+    public void setWeightEmpty(int weightEmpty) {
         this.weightEmpty = weightEmpty;
     }
 
-    void setMaxWeight(int maxWeight) {
+    public void setMaxWeight(int maxWeight) {
         this.maxWeight = maxWeight;
     }
 
-    void setLaunchFailChancePercentage(double launchFailChancePercentage) {
+    public void setLaunchFailChancePercentage(double launchFailChancePercentage) {
         this.launchFailChancePercentage = launchFailChancePercentage;
     }
 
-    void setCargoLimit(int cargoLimit) {
+    public void setCargoLimit(int cargoLimit) {
         this.cargoLimit = cargoLimit;
     }
 
-    void setLandFailChancePercentage(double landFailChancePercentage) {
+    public void setLandFailChancePercentage(double landFailChancePercentage) {
         this.landFailChancePercentage = landFailChancePercentage;
     }
 
-    void setWeightCurrent(int weightCurrent) {
+    public void setWeightCurrent(int weightCurrent) {
         this.weightCurrent = weightCurrent;
     }
 }

@@ -3,6 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Simulation {
@@ -11,68 +12,66 @@ public class Simulation {
     private String phase;
     private String fleetType;
 
-    public ArrayList<Item> loadItems(File phase){
+    public List<Item> loadItems(File phase) {
         try {
             scanner = new Scanner(phase).useDelimiter("[=\\n]");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        ArrayList<Item> ItemsList = new ArrayList<>();
+        List<Item> itemsList = new ArrayList<>();
         while (scanner.hasNext()) {
             Item item = new Item(scanner.next(), scanner.nextInt());
-            ItemsList.add(item);
+            itemsList.add(item);
         }
         scanner.close();
-        return ItemsList;
+        return itemsList;
     }
 
-    public ArrayList<Rocket> loadFleet(String type, ArrayList<Item> ItemsList){
+    public List<Rocket> loadFleet(FleetType type, List<Item> items) {
         int i = 0;
-        ArrayList<Rocket> Rockets = new ArrayList<>();
-
-        switch (type) {
-            case "u1":
-                while (i <= (ItemsList.size() - 1)) {
-                    U1 u1 = new U1();
-                    while ((i <= ItemsList.size() - 1) && u1.canCarry(ItemsList.get(i))) {
-                        u1.carry(ItemsList.get(i));
-                        i++;
-                    }
-                    Rockets.add(u1);
-                }
-            case "u2":
-                while (i<=(ItemsList.size()-1)) {
-                    U2 u2 = new U2();
-                    while ((i<=ItemsList.size()-1) && u2.canCarry(ItemsList.get(i))) {
-                        u2.carry(ItemsList.get(i));
-                        i++;
-                    }
-                    Rockets.add(u2);
-                }
+        ArrayList<Rocket> rockets = new ArrayList<>();
+        while (i <= (items.size() - 1)) {
+            Rocket r = createNewRocket(type);
+            while ((i <= items.size() - 1) && r.canCarry(items.get(i))) {
+                r.carry(items.get(i));
+                i++;
+            }
+            rockets.add(r);
         }
-        return Rockets;
+        return rockets;
     }
 
-    public int calculateBudgetRequired(ArrayList<Rocket> RocketList){
+    private Rocket createNewRocket(FleetType type) {
+        switch (type) {
+            case U1:
+                return new U1();
+            case U2:
+                return new U2();
+            default:
+                return new Rocket();
+        }
+    }
+
+    public int calculateBudgetRequired(List<Rocket> RocketList) {
         int budgetNeeded = 0;
         for (Rocket r : RocketList) {
             budgetNeeded += r.getCost();
             while (!(r.launch() && r.land()))
-            budgetNeeded += r.getCost();
+                budgetNeeded += r.getCost();
         }
         return budgetNeeded;
     }
 
-    public void communicateOutcome(int budget) {
+    private void communicateOutcome(int budget) {
         System.out.println(phase + " fleet of " + fleetType + " cost is " + budget + "mln USD");
     }
 
-    public void runSimulation (File itemsList,String fleetType) {
-        this.phase = itemsList.getName().substring(0,itemsList.getName().length()-4);
-        this.fleetType = fleetType;
-        ArrayList<Item> items = loadItems(itemsList);
-        ArrayList<Rocket> fleet = loadFleet(fleetType,items);
+    public void runSimulation(File itemsList, FleetType fleetType) {
+        this.phase = itemsList.getName().substring(0, itemsList.getName().length() - 4);
+        this.fleetType = fleetType.toString();
+        List<Item> items = loadItems(itemsList);
+        List<Rocket> fleet = loadFleet(fleetType, items);
         int cost = calculateBudgetRequired(fleet);
         communicateOutcome(cost);
-        }
+    }
 }

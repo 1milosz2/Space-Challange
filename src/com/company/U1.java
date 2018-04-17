@@ -3,12 +3,12 @@ package com.company;
 public class U1 extends Rocket {
 
     public U1() {
-        setCost(100);
-        setWeightEmpty(10000);
-        setWeightCurrent(10000);
-        setMaxWeight(18000);
-        setLaunchFailChancePercentage(5);
-        setLandFailChancePercentage(1);
-        setCargoLimit(getMaxWeight() - getWeightEmpty());
+        cost = 100;
+        weightEmpty = 10000;
+        weightCurrent = weightEmpty;
+        maxWeight = 18000;
+        launchFailChancePercentage = 5;
+        landFailChancePercentage = 1;
+        cargoLimit = maxWeight - weightEmpty;
     }
 }
