@@ -23,8 +23,8 @@ class SimulationTest {
     void calculatesU1FleetBudgetWhenPhase1FileGiven() {
         Simulation s = new Simulation();
         File phase1 = new File("phase-1.txt");
-        List<Item> ItemsList = s.loadItems(phase1);
-        List<Rocket> U1List = s.loadFleet(FleetType.U1, ItemsList);
+        List<Item> itemsList = s.loadItems(phase1);
+        List<Rocket> U1List = s.loadFleet(FleetType.U1, itemsList);
         int budgetRequired = s.calculateBudgetRequired(U1List);
         boolean isBudgetPositiveNumber;
         isBudgetPositiveNumber = budgetRequired >= 0;
@@ -35,8 +35,8 @@ class SimulationTest {
     void calculatesU2FleetBudgetWhenPhase2FileGiven() {
         Simulation s = new Simulation();
         File phase1 = new File("phase-2.txt");
-        List<Item> ItemsList = s.loadItems(phase1);
-        List<Rocket> U2List = s.loadFleet(FleetType.U2, ItemsList);
+        List<Item> itemsList = s.loadItems(phase1);
+        List<Rocket> U2List = s.loadFleet(FleetType.U2, itemsList);
         int budgetRequired = s.calculateBudgetRequired(U2List);
         boolean isBudgetPositiveNumber;
         isBudgetPositiveNumber = budgetRequired >= 0;
